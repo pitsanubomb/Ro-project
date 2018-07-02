@@ -12,6 +12,8 @@
 #Include <ScrollBarConstants.au3>
 
 
+#include <lib/autopotion.au3>
+
 HotKeySet("{HOME}", "Start")
 HotKeySet("{ESC}", "_Exit")
 HotKeySet("{INS}", "Stop")
