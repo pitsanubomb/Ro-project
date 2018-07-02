@@ -73,20 +73,6 @@ While 1
    EndSwitch
  WEnd
 
-Func Pitionauto()
-	;~ 00CEE7FF
-	$potioncheck = PixelGetColor(460, 82)
-	;~ ConsoleWrite(Hex($potioncheck))
-	If Hex($potioncheck) = "00CEE7FF" Then
-		;~ ConsoleWrite("Check Lifepoint save")
-	Else
-		;~ Send key to add potion
-		;~ ConsoleWrite("I love u" & @CRLF)
-		ControlSend("Ragnarok","","","{F1}")
-	EndIf
-
-EndFunc
-
 Func AttackMonster()
    WinActivate("Ragnarok")
    Pitionauto()
