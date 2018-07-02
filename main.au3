@@ -17,7 +17,7 @@ HotKeySet("{ESC}", "_Exit")
 HotKeySet("{INS}", "Stop")
 
 Global $sw = 1
-Global $FloorColor = 0x524A6B
+Global $FloorColor = 0x21242B
 Global $monster =  0x00FF00
 Global $lock = 0x440088
 Global $checkLiftMonster = "440088"
@@ -73,10 +73,23 @@ While 1
    EndSwitch
  WEnd
 
+Func Pitionauto()
+	;~ 00CEE7FF
+	$potioncheck = PixelGetColor(460, 82)
+	;~ ConsoleWrite(Hex($potioncheck))
+	If Hex($potioncheck) = "00CEE7FF" Then
+		;~ ConsoleWrite("Check Lifepoint save")
+	Else
+		;~ Send key to add potion
+		;~ ConsoleWrite("I love u" & @CRLF)
+		ControlSend("Ragnarok","","","{F1}")
+	EndIf
 
+EndFunc
 
 Func AttackMonster()
    WinActivate("Ragnarok")
+   Pitionauto()
    $FindMonster = PixelSearch(0,0,@DesktopWidth,@DesktopHeight,$monster)
    If Not @error Then
 	  MouseClick("left",$FindMonster[0] + 25 ,$FindMonster[1] + 25,3, 0)
@@ -128,16 +141,18 @@ Func Start()
  EndFunc
 
 Func Walk()
+;~    0x21242B
    $iColor = PixelGetColor(843, 433) ;=> UP
-   If Hex($iColor) = "00524A6B" Then
+;~    ConsoleWrite(Hex($iColor) & @CRLF)
+   If Hex($iColor) = "0021242B" Then
 	  $iColor = PixelGetColor(701, 513)
-	  If Hex($iColor) = "00524A6B" Then
+	  If Hex($iColor) = "0021242B" Then
 		 ConsoleWrite("Can Left" & @CRLF)
 		 $iColor = PixelGetColor(993, 516) ;=> Right
-		 If Hex($iColor) = "00524A6B" Then
+		 If Hex($iColor) = "0021242B" Then
 			ConsoleWrite("Can Right" & @CRLF)
 			$iColor = PixelGetColor(843, 680) ;=> Down
-			If Hex($iColor) = "00524A6B" Then
+			If Hex($iColor) = "0021242B" Then
 			   ConsoleWrite("Can Down" & @CRLF)
 			   ConsoleWrite("Randor All" & @CRLF)
 			   $WALKALL[Random(0, 7, 1)]()
@@ -150,10 +165,10 @@ Func Walk()
 		 EndIf
 	  Else
 		 $iColor = PixelGetColor(993, 516) ;=> Right
-		 If Hex($iColor) = "00524A6B" Then
+		 If Hex($iColor) = "0021242B" Then
 ;~ 			PixelSearch(0,0,848, 643,$FloorColor) ;=>Down
 			$iColor = PixelGetColor(843, 680)
-			If Hex($iColor) = "00524A6B" Then
+			If Hex($iColor) = "0021242B" Then
 			   $NOTWALKLEFT[Random(0, 4, 1)]()
 			Else
 			   $NOTWALKDOWN[Random(0, 4, 1)]()
@@ -164,14 +179,14 @@ Func Walk()
 	  EndIf
    Else
 	  ConsoleWrite("Can not walk up" & @CRLF)
-	  ConsoleWrite(Hex($iColor) & @CRLF)
+	;~   ConsoleWrite(Hex($iColor) & @CRLF)
 	  $iColor = PixelGetColor(701, 513)
-	  If Hex($iColor) = "00524A6B" Then
+	  If Hex($iColor) = "0021242B" Then
 		 ConsoleWrite("Can Left" & @CRLF)
 		 $iColor = PixelGetColor(993, 516) ;=> Right
-		 If Hex($iColor) = "00524A6B" Then
+		 If Hex($iColor) = "0021242B" Then
 			$iColor = PixelGetColor(405, 514)
-			If Hex($iColor) = "00524A6B" Then
+			If Hex($iColor) = "0021242B" Then
 			   $NOTWALKUP[Random(0, 4, 1)]()
 			Else
 			   $NOTWALKDOWNANDUP[Random(0, 1, 1)]()
@@ -181,10 +196,10 @@ Func Walk()
 		 EndIf
 	  Else
 		 $iColor = PixelGetColor(993, 516) ;=> Right
-		 If Hex($iColor) = "00524A6B" Then
+		 If Hex($iColor) = "0021242B" Then
 ;~ 			PixelSearch(0,0,848, 643,$FloorColor) ;=>Down
 			$iColor = PixelGetColor(843, 680)
-			If Hex($iColor) = "00524A6B" Then
+			If Hex($iColor) = "0021242B" Then
 			   $NOTWALKDOWNANDLEFT[Random(0, 2, 1)]()
 			Else
 			   $NOTWALKDOWNANDUP[Random(0, 1, 1)]()
@@ -202,7 +217,7 @@ Func WalkUp()
 	  MouseClick("left",845, 196, 5)
 	  Sleep(100)
 	  $iColor = PixelGetColor(843, 433)
-	  If Not Hex($iColor) = "00524A6B" Then
+	  If Not Hex($iColor) = "0021242B" Then
 		 ExitLoop
 	  EndIf
 	  $WALKCOUNT = $WALKCOUNT + 1
@@ -215,7 +230,7 @@ Func WalkDown()
 	  MouseClick("left", 845, 842, 5)
 	  Sleep(100)
 	  $iColor = PixelGetColor(843, 680)
-	  If Not Hex($iColor) = "00524A6B" Then
+	  If Not Hex($iColor) = "0021242B" Then
 		 ExitLoop
 	  EndIf
 	  $WALKCOUNT = $WALKCOUNT + 1
@@ -228,7 +243,7 @@ Func WalkLeft()
 	  MouseClick("left", 436, 550, 5)
 	  Sleep(100)
 	  $iColor = PixelGetColor(701, 513)
-	  If Not Hex($iColor) = "00524A6B" Then
+	  If Not Hex($iColor) = "0021242B" Then
 		 ExitLoop
 	  EndIf
 	  $WALKCOUNT = $WALKCOUNT + 1
@@ -241,7 +256,7 @@ Func WalkRight()
 	  MouseClick("left", 1190, 550, 5)
 	  Sleep(100)
 	  $iColor = PixelGetColor(993, 516)
-	  If Not Hex($iColor) = "00524A6B" Then
+	  If Not Hex($iColor) = "0021242B" Then
 		 ExitLoop
 	  EndIf
 	  $WALKCOUNT = $WALKCOUNT + 1
