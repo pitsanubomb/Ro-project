@@ -5,9 +5,9 @@
 
 #include <config/core.config.au3>
 
-HotKeySet("{HOME}", "Start")
+HotKeySet("{s}", "Start")
 HotKeySet("{ESC}", "_Exit")
-HotKeySet("{INS}", "Stop")
+HotKeySet("{p}", "Stop")
 
 $hGUI = GUICreate("Form1", 401, 401, -1, -1,  BitOR($WS_POPUP,$WS_BORDER), $WS_EX_TOPMOST)
 GUISetBkColor($Bg)
