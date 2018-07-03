@@ -93,9 +93,9 @@ Func AttackMonster()
 			While(1)
 			   $itmesall = PixelSearch(0,0,@DesktopWidth,@DesktopHeight,$item)
 			   If not @error Then
-			   GUICtrlSetData($hEdit, @CRLF & @HOUR & ":" & @MIN& " : ได้ทำการเก็บไอเทม", 1)
-			   _GUICtrlEdit_Scroll($hEdit, $SB_SCROLLCARET)
-				  MouseClick("Primary", $itmesall[0] + 20, $itmesall[1] + 20, 5, 0)
+			   	GUICtrlSetData($hEdit, @CRLF & @HOUR & ":" & @MIN& " : ได้ทำการเก็บไอเทม", 1)
+			   	_GUICtrlEdit_Scroll($hEdit, $SB_SCROLLCARET)
+				MouseClick("Primary", $itmesall[0] + 20, $itmesall[1] + 20, 5, 0)
 			   Else
 				  ExitLoop
 			   EndIf
