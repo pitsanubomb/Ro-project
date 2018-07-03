@@ -77,7 +77,7 @@ While 1
 
 Func AttackMonster()
    WinActivate("Ragnarok")
-   Pitionauto()
+   Autopotion()
    $FindMonster = PixelSearch(0,0,@DesktopWidth,@DesktopHeight,$monster)
    If Not @error Then
 	  MouseClick("left",$FindMonster[0] + 25 ,$FindMonster[1] + 25,3, 0)
