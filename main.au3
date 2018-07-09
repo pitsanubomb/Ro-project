@@ -49,7 +49,7 @@ Func AttackMonster()
    If Not @error Then
 	  GUICtrlSetData($hEdit, @CRLF & @HOUR & ":" & @MIN& " : เจอมอนส์เตอร์" ,1)
 	  _GUICtrlEdit_Scroll($hEdit, $SB_SCROLLCARET)
-	  MouseClick("left",$FindMonster[0] + 25,$FindMonster[1] + 25)
+	  MouseClick("left",$FindMonster[0],$FindMonster[1])
 	  GUICtrlSetData($hEdit, @CRLF & @HOUR & ":" & @MIN& " : ตีม้อนส์เตอร์" ,1)
 	  _GUICtrlEdit_Scroll($hEdit, $SB_SCROLLCARET)
 	  While(1)
@@ -66,7 +66,7 @@ Func AttackMonster()
 			   If not @error Then
 			   	GUICtrlSetData($hEdit, @CRLF & @HOUR & ":" & @MIN& " : ได้ทำการเก็บไอเทม", 1)
 			   	_GUICtrlEdit_Scroll($hEdit, $SB_SCROLLCARET)
-				MouseClick("Primary", $itemall[0] + 25, $itemall[1] + 25)
+				MouseClick("Primary", $itemall[0], $itemall[1])
 			   Else
 			   	  GUICtrlSetData($hEdit, @CRLF & @HOUR & ":" & @MIN& " : Walk Alone", 1)
 				  ExitLoop
