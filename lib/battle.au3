@@ -29,7 +29,7 @@ Func AttackMonster()
 			   If not @error Then
 			   	GUICtrlSetData($hEdit, @CRLF & @HOUR & ":" & @MIN& " : ได้ทำการเก็บไอเทม", 1)
 			   	_GUICtrlEdit_Scroll($hEdit, $SB_SCROLLCARET)
-				MouseClick("Primary", $itemall[0], $itemall[1])
+				MouseClick("Primary", $itemall[0] + 25, $itemall[1] + 25)
 			   Else
 			   	  GUICtrlSetData($hEdit, @CRLF & @HOUR & ":" & @MIN& " : Walk Alone", 1)
 				  ExitLoop
