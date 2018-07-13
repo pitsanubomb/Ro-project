@@ -6,5 +6,4 @@ Func Autopotion()
 	    _GUICtrlEdit_Scroll($hEdit, $SB_SCROLLCARET)
 		ControlSend("Ragnarok","","","{F1}")
 	EndIf
-
 EndFunc
