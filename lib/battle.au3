@@ -8,13 +8,14 @@ Func AttackMonster()
 	    _GUICtrlEdit_Scroll($hEdit, $SB_SCROLLCARET)
 		ControlSend("Ragnarok","","","{F2}")
 	EndIf
-   $FindMonster = PixelSearch(0,0,@DesktopWidth,@DesktopHeight,$monster)
-   If Not @error Then
-	  GUICtrlSetData($hEdit, @CRLF & @HOUR & ":" & @MIN& " : เจอมอนส์เตอร์" ,1)
-	  _GUICtrlEdit_Scroll($hEdit, $SB_SCROLLCARET)
-	  MouseClick("left",$FindMonster[0],$FindMonster[1])
-	  GUICtrlSetData($hEdit, @CRLF & @HOUR & ":" & @MIN& " : ตีม้อนส์เตอร์" ,1)
-	  _GUICtrlEdit_Scroll($hEdit, $SB_SCROLLCARET)
+;~    $FindMonster = PixelSearch(0,0,@DesktopWidth,@DesktopHeight,$monster)
+	$FindMonster = PixelSearch(0,199,@DesktopWidth,800,$monster) 
+   	If Not @error Then
+		GUICtrlSetData($hEdit, @CRLF & @HOUR & ":" & @MIN& " : เจอมอนส์เตอร์" ,1)
+	  	_GUICtrlEdit_Scroll($hEdit, $SB_SCROLLCARET)
+	  	MouseClick("left",$FindMonster[0],$FindMonster[1])
+	  	GUICtrlSetData($hEdit, @CRLF & @HOUR & ":" & @MIN& " : ตีม้อนส์เตอร์" ,1)
+	  	_GUICtrlEdit_Scroll($hEdit, $SB_SCROLLCARET)
 	  While(1)
 		$Alive = PixelSearch(0,0,@DesktopWidth,@DesktopHeight,$lock)
 		 If Not @error Then
